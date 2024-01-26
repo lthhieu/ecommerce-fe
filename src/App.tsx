@@ -2,14 +2,19 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Home from "./pages/public/Home";
+import Contact from "./pages/public/Contact";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "home",
-    element: <div>Home</div>,
+    element: <Home />,
+    errorElement: <div>404 page not found</div>,
+    children: [
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
 const App = () => {

@@ -4,10 +4,11 @@ import {
 } from "react-router-dom";
 import Home from "./pages/public/Home";
 import Contact from "./pages/public/Contact";
+import LayoutApp from "./components/layout.app";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <LayoutApp><Home /></LayoutApp>,
     errorElement: <div>404 page not found</div>,
     children: [
       {

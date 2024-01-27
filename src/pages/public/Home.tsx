@@ -1,8 +1,12 @@
-import { Outlet } from "react-router-dom"
+import Footer from "../../components/footer"
+import WrapperOne from "../../components/wrapper.one"
+import WrapperTwo from "../../components/wrapper.two"
 
 const Home = () => {
-    return (<div className="text-white bg-red text-6xl">item
-        <Outlet />
+    return (<div>
+        <div><WrapperOne /></div>
+        <div><WrapperTwo /></div>
+        <div><Footer /></div>
     </div>)
 }
 export default Home

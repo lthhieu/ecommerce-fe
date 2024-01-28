@@ -1,6 +1,6 @@
-import Header from "./Header"
-import Navigation from "./Navigation"
-import TopHeader from "./Top.Header"
+import Header from "./header"
+import Navigation from "./navigation"
+import TopHeader from "./top.header"
 
 interface IProps {
     children: React.ReactNode

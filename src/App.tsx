@@ -1,22 +1,42 @@
 import {
   createBrowserRouter,
+  Outlet,
   RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/public/Home";
 import Contact from "./pages/public/Contact";
-import LayoutApp from "./components/layout.app";
+import TopHeader from "./components/top.header";
+import Header from "./components/header";
+import Navigation from "./components/navigation";
+import Footer from "./components/footer";
+import { path } from "./utils/constant";
+
+const LayoutClient = () => {
+
+  return (
+    <div className="flex flex-col items-center">
+      <TopHeader />
+      <Header />
+      <Navigation />
+      <Outlet />
+      <Footer />
+    </div>
+  )
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LayoutApp><Home /></LayoutApp>,
+    element: <LayoutClient />,
     errorElement: <div>404 page not found</div>,
     children: [
+      { index: true, element: <Home /> },
       {
-        path: "contact",
+        path: path.PRODUCTS,
         element: <Contact />,
       },
     ],
-  },
+  }
 ]);
 const App = () => {
   return (

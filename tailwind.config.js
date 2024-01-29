@@ -15,7 +15,8 @@ export default {
       textColor: {
         'red': '#ee3131',
         'black': '#505050',
-        'white': '#ffffff'
+        'white': '#ffffff',
+        'nav': '#1d1d1d'
       },
       backgroundColor: {
         'red': '#ee3131',

@@ -9,7 +9,7 @@ import TopHeader from "./components/top.header";
 import Header from "./components/header";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
-import { path } from "./utils/constant";
+import { path } from "./config/constant";
 
 const LayoutClient = () => {
 

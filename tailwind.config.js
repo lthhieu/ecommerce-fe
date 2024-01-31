@@ -16,7 +16,8 @@ export default {
         'red': '#ee3131',
         'black': '#505050',
         'white': '#ffffff',
-        'nav': '#1d1d1d'
+        'nav': '#1d1d1d',
+        'collection': '#1c1d1d'
       },
       backgroundColor: {
         'red': '#ee3131',

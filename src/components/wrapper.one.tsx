@@ -1,14 +1,19 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { apiFetchCategories } from "../config/api";
+import { ICategories } from "../config/data.type";
 
 const WrapperOne = () => {
-    const fetchCategories = async () => {
-        const response = await apiFetchCategories()
-        console.log(response)
-    }
+    const [categories, setCategories] = useState<ICategories[] | null>(null)
     useEffect(() => {
         fetchCategories()
+
     }, []);
+    const fetchCategories = async () => {
+        const res = await apiFetchCategories()
+        if (res && res.data) setCategories(res.data)
+    }
+
+    console.log('categories', categories)
     return (<div className="w-main px-5 flex py-5"
     ><div className="w-[30%]">sidebar</div>
         <div className="w-[70%] h-[480px]">

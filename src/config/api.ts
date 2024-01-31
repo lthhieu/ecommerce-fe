@@ -1,5 +1,6 @@
 import axios from './custom-axios'
+import { IBackendRes, ICategories } from './data.type'
 
 export const apiFetchCategories = () => {
-    return axios.get('categories')
+    return axios.get<IBackendRes<ICategories>>('categories')
 }

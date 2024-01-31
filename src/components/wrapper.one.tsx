@@ -1,4 +1,14 @@
+import { useEffect } from "react"
+import { apiFetchCategories } from "../config/api";
+
 const WrapperOne = () => {
+    const fetchCategories = async () => {
+        const response = await apiFetchCategories()
+        console.log(response)
+    }
+    useEffect(() => {
+        fetchCategories()
+    }, []);
     return (<div className="w-main px-5 flex py-5"
     ><div className="w-[30%]">sidebar</div>
         <div className="w-[70%] h-[480px]">

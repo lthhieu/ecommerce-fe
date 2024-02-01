@@ -11,18 +11,18 @@ import { FaCamera } from "react-icons/fa";
 import { FiPrinter } from "react-icons/fi";
 import { CgMusicSpeaker } from "react-icons/cg";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { fetchCategoriesAsync, selectData, selectStatus } from "../app/slice/categoriesSlice";
 
 const WrapperOne = () => {
-    const [categories, setCategories] = useState<ICategories[] | null>(null)
-    useEffect(() => {
-        fetchCategories()
+    const dispatch = useAppDispatch();
+    const status = useAppSelector(selectStatus)
+    const categories = useAppSelector(selectData)
 
+    useEffect(() => {
+        dispatch(fetchCategoriesAsync(null))
     }, []);
-    const fetchCategories = async () => {
-        const res = await apiFetchCategories()
-        //@ts-ignore
-        if (res && res.data) setCategories(res.data)
-    }
+
     return (<div className="w-main px-5 flex py-5 gap-6"
     ><div className="w-[30%] flex-col flex border">
             <div className="px-5 py-3 text-lg bg-red text-white font-semibold flex gap-4 items-center"><FaListUl /> ALL COLLECTIONS</div>

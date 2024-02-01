@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
-import { apiFetchCategories } from "../config/api";
-import { ICategories } from "../config/data.type";
+import { useEffect } from "react"
 import { NavLink } from "react-router-dom";
 import { FaListUl } from "react-icons/fa6";
 import { FaHeadphones } from "react-icons/fa6";
@@ -11,8 +9,8 @@ import { FaCamera } from "react-icons/fa";
 import { FiPrinter } from "react-icons/fi";
 import { CgMusicSpeaker } from "react-icons/cg";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { fetchCategoriesAsync, selectData, selectStatus } from "../app/slice/categoriesSlice";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import { fetchCategoriesAsync, selectData, selectStatus } from "app/slice/categoriesSlice";
 
 const WrapperOne = () => {
     const dispatch = useAppDispatch();

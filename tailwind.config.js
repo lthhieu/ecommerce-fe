@@ -17,11 +17,15 @@ export default {
         'black': '#505050',
         'white': '#ffffff',
         'nav': '#1d1d1d',
-        'collection': '#1c1d1d'
+        'collection': '#1c1d1d',
+        'tab': '#151515'
       },
       backgroundColor: {
         'red': '#ee3131',
         'white': '#ffffff'
+      },
+      borderColor: {
+        'red': '#ee3131'
       }
     },
   },

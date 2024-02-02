@@ -29,3 +29,7 @@ export const navigation = [
         path: path.FAQS
     }
 ]
+export const tab = [
+    { id: 1, value: 'best seller' },
+    { id: 2, value: 'new arrivals' }
+]

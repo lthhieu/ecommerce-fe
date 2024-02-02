@@ -10,36 +10,38 @@
 }
 
 button.slick-next::before {
-    background-color: #efd3d3;
+    background-color: #fff;
     content: '\2B9E';
     font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     font-weight: 400;
     color: #151515;
 }
 
 button.slick-prev::before {
-    background-color: #efd3d3;
+    background-color: #fff;
     content: '\2B9C';
     font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     font-weight: 400;
     color: #151515;
 }
 
 button.slick-prev {
-    left: 0px;
+    left: 20px;
     z-index: 1;
+    top: 40%;
 }
 
 button.slick-next {
-    right: 60px;
+    top: 40%;
+    right: 81px
 }

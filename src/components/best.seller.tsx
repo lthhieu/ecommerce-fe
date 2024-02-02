@@ -6,60 +6,47 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 const BestSeller = () => {
-    // const [bestSeller, setBestSeller] = useState<IProducts[] | null>(null)
-    // const [newArrivals, setNewArrivals] = useState<IProducts[] | null>(null)
+    const [bestSeller, setBestSeller] = useState<IProducts[]>([])
+    const [newArrivals, setNewArrivals] = useState<IProducts[]>([])
     const [activeTab, setActiveTab] = useState(1)
-    // useEffect(() => {
-    //     fetchProducts()
-    // }, []);
-    // const fetchProducts = async () => {
-    //     const res = await Promise.all([apiFetchProducts(`current=1&pageSize=5&sort=-sold`), apiFetchProducts(`current=1&pageSize=5`)])
-    //     if (res[0] && res[0].data) setBestSeller(res[0].data?.result)
-    //     if (res[1] && res[1].data) setNewArrivals(res[1].data?.result)
-    // }
+    useEffect(() => {
+        fetchProducts()
+    }, []);
+    const fetchProducts = async () => {
+        const res = await Promise.all([apiFetchProducts(`current=1&pageSize=5&sort=-sold`), apiFetchProducts(`current=1&pageSize=5`)])
+        if (res[0] && res[0].data) setBestSeller(res[0].data?.result)
+        if (res[1] && res[1].data) setNewArrivals(res[1].data?.result)
+    }
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToScroll: 1
     };
-    return (<div className="">
+    return (<div>
         <div className="flex text-xl text-tab font-semibold uppercase gap-5 border-b-2 border-red pb-3">
             {tab.map(item => {
                 return (
                     <span onClick={() => setActiveTab(item.id)} key={item.id} className={`cursor-pointer pr-5 ${item.id === activeTab ? 'opacity-100' : 'opacity-50'} ${item.id === tab.length ? '' : 'border-r-2'}`}>{item.value}</span>)
             })}
         </div>
-        <div className="mt-4">
-            <Slider {...settings}>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">1</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">2</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">3</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">4</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">5</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">6</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">7</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">8</div>
-                </div>
-                <div className="pl-5">
-                    <div className="border w-[240px] h-[240px] flex items-center justify-center p-4">9</div>
-                </div>
+        <div className="mt-4 ml-[-20px] mr-[-30px]">
+            <Slider {...settings} >
+                {bestSeller.map(item => {
+                    return (
+                        <div key={item._id} className="pl-5">
+                            <div className="border w-[240px] flex flex-col py-4 pl-4">
+                                <img src={item.thumb} alt="photo" className="w-full" />
+                                <div className="flex flex-col gap-2 mt-4">
+                                    <span className="text-product">{item.title}</span>
+                                    <span className="text-price">{item.price} VND</span>
+                                    <span >{item.sold}</span>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
             </Slider>
         </div>
     </div>)

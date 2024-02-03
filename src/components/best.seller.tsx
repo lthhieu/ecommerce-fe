@@ -24,6 +24,8 @@ const BestSeller = () => {
         slidesToShow: 3,
         slidesToScroll: 1
     };
+    const addCommas = (num: string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const removeNonNumeric = (num: number) => num.toString().replace(/[^0-9]/g, "");
     return (<div>
         <div className="flex text-xl text-tab font-semibold uppercase gap-5 border-b-2 border-red pb-3">
             {tab.map(item => {
@@ -39,8 +41,8 @@ const BestSeller = () => {
                             <div className="border w-[240px] flex flex-col py-4 pl-4">
                                 <img src={item.thumb} alt="photo" className="w-full" />
                                 <div className="flex flex-col gap-2 mt-4">
-                                    <span className="text-product">{item.title}</span>
-                                    <span className="text-price">{item.price} VND</span>
+                                    <span className="text-product line-clamp-1">{item.title}</span>
+                                    <span className="text-price">{addCommas(removeNonNumeric(item.price))} VND</span>
                                     <span >{item.sold}</span>
                                 </div>
                             </div>

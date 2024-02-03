@@ -24,7 +24,9 @@ export default {
       },
       backgroundColor: {
         'red': '#ee3131',
-        'white': '#ffffff'
+        'white': '#ffffff',
+        'yellow': '#ffb400',
+        'info': '#00d5d5'
       },
       borderColor: {
         'red': '#ee3131'

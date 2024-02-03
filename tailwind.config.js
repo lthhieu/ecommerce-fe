@@ -20,7 +20,8 @@ export default {
         'collection': '#1c1d1d',
         'tab': '#151515',
         'price': '#333333',
-        'product': '#2b3743'
+        'product': '#2b3743',
+        'yellow': '#ffb400'
       },
       backgroundColor: {
         'red': '#ee3131',

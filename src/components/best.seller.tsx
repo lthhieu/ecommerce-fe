@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { addCommas, convertNumberToList, removeNonNumeric } from "@/config/helper";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 const BestSeller = () => {
     const [bestSeller, setBestSeller] = useState<IProducts[]>([])
     const [newArrivals, setNewArrivals] = useState<IProducts[]>([])
@@ -30,8 +32,7 @@ const BestSeller = () => {
         slidesToShow: 3,
         slidesToScroll: 1
     };
-    const addCommas = (num: string) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const removeNonNumeric = (num: number) => num.toString().replace(/[^0-9]/g, "");
+
     return (<div>
         <div className="flex text-xl text-tab font-semibold uppercase gap-5 border-b-2 border-red pb-3">
             {tab.map(item => {
@@ -49,6 +50,13 @@ const BestSeller = () => {
                                 <span className={`absolute top-0 left-0 ${activeTab === 1 ? 'bg-yellow' : 'bg-info'} px-3 py-[1px] rounded-md font-medium text-white`}>{activeTab === 1 ? 'Trending' : 'New'}</span>
                                 <div className="flex flex-col gap-2 mt-4">
                                     <span className="text-product line-clamp-1">{item.title}</span>
+                                    <div className="flex gap-1">{convertNumberToList(item.totalRating).map((item, index) => {
+                                        return (
+                                            <span key={index} className="text-yellow text-xs">
+                                                {item === 1 ? <BsStarFill /> : item === 0 ? <BsStar /> : <BsStarHalf />}
+                                            </span>
+                                        )
+                                    })}</div>
                                     <span className="text-price">{addCommas(removeNonNumeric(item.price))} VND</span>
                                 </div>
                             </div>

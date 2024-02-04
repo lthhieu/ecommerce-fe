@@ -5,17 +5,12 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { addCommas, convertNumberToList, removeNonNumeric } from "@/config/helper";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import SelectOption from "./select.option";
-import { FaEye } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { IoMdMenu } from "react-icons/io";
+import ProductElement from "./product.element";
 const BestSeller = () => {
     const [bestSeller, setBestSeller] = useState<IProducts[]>([])
     const [newArrivals, setNewArrivals] = useState<IProducts[]>([])
     const [products, setProducts] = useState<IProducts[]>([])
-    const [activeTab, setActiveTab] = useState(0)
+    const [activeTab, setActiveTab] = useState<number>(0)
     useEffect(() => {
         fetchProducts()
     }, []);
@@ -48,28 +43,7 @@ const BestSeller = () => {
             <Slider {...settings} >
                 {products.length > 0 && products.map(item => {
                     return (
-                        <div key={item._id} className="pl-5">
-                            <div className="border w-[240px] flex flex-col py-4 pl-4 relative rounded-md">
-                                <img src={item.thumb} alt="photo" className="w-full" />
-                                <div className="absolute bottom-[15%] flex gap-2 justify-center w-full">
-                                    <SelectOption icon={<FaHeart />} />
-                                    <SelectOption icon={<IoMdMenu />} />
-                                    <SelectOption icon={<FaEye />} />
-                                </div>
-                                <span className={`absolute top-0 left-0 ${activeTab === 1 ? 'bg-yellow' : 'bg-info'} px-3 py-[1px] rounded-md font-medium text-white`}>{activeTab === 1 ? 'Trending' : 'New'}</span>
-                                <div className="flex flex-col gap-2 mt-4">
-                                    <span className="text-product line-clamp-1">{item.title}</span>
-                                    <div className="flex gap-1">{convertNumberToList(item.totalRating).map((item, index) => {
-                                        return (
-                                            <span key={index} className="text-yellow text-xs">
-                                                {item === 1 ? <BsStarFill /> : item === 0 ? <BsStar /> : <BsStarHalf />}
-                                            </span>
-                                        )
-                                    })}</div>
-                                    <span className="text-price">{addCommas(removeNonNumeric(item.price))} VND</span>
-                                </div>
-                            </div>
-                        </div>
+                        <ProductElement key={item._id} product={item} activeTab={activeTab} />
                     )
                 })}
             </Slider>

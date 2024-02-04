@@ -16,7 +16,7 @@ const ProductElement = (props: IProps) => {
     const { product, activeTab } = props
     const [isShow, setIsShow] = useState<boolean>(false)
     return (
-        <div key={product._id} className="pl-5">
+        <div key={product._id} className="pl-5 animate-fade-in">
             <div className="border flex flex-col py-4 pl-4 relative rounded-md"
                 onMouseEnter={() => { setIsShow(true) }} onMouseLeave={() => { setIsShow(false) }}>
                 <img src={product.thumb} alt="photo" />

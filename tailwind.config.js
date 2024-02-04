@@ -21,13 +21,15 @@ export default {
         'tab': '#151515',
         'price': '#333333',
         'product': '#2b3743',
-        'yellow': '#ffb400'
+        'yellow': '#ffb400',
+        'icon': '#2a2a2a'
       },
       backgroundColor: {
         'red': '#ee3131',
         'white': '#ffffff',
         'yellow': '#ffb400',
-        'info': '#00d5d5'
+        'info': '#00d5d5',
+        'icon': '#2a2a2a'
       },
       borderColor: {
         'red': '#ee3131'

@@ -20,6 +20,7 @@ button.slick-next::before {
     height: 70px;
     font-weight: 400;
     color: #151515;
+    border-radius: 6px
 }
 
 button.slick-prev::before {
@@ -33,6 +34,7 @@ button.slick-prev::before {
     height: 70px;
     font-weight: 400;
     color: #151515;
+    border-radius: 6px
 }
 
 button.slick-prev {
@@ -43,5 +45,5 @@ button.slick-prev {
 
 button.slick-next {
     top: 40%;
-    right: 81px
+    right: 50px
 }

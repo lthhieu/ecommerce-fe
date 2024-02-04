@@ -25,7 +25,7 @@ const BestSeller = () => {
         setActiveTab(1)
     }
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
@@ -33,13 +33,13 @@ const BestSeller = () => {
     };
 
     return (<div>
-        <div className="flex text-xl text-tab font-semibold uppercase gap-5 border-b-2 border-red pb-3">
+        <div className="flex text-xl text-tab font-semibold uppercase gap-5 border-b-2 border-red pb-3 ml-5">
             {tab.map(item => {
                 return (
                     <span onClick={() => setActiveTab(item.id)} key={item.id} className={`cursor-pointer pr-5 ${item.id === activeTab ? 'opacity-100' : 'opacity-50'} ${item.id === tab.length ? '' : 'border-r-2'}`}>{item.value}</span>)
             })}
         </div>
-        <div className="mt-4 ml-[-20px] mr-[-30px]">
+        <div className="mt-4 pr-0.5">
             <Slider {...settings} >
                 {products.length > 0 && products.map(item => {
                     return (
@@ -47,6 +47,12 @@ const BestSeller = () => {
                     )
                 })}
             </Slider>
+        </div>
+        <div className="mt-4 flex gap-4 ml-5 justify-between">
+            <div><img className="object-cover rounded-md" src="https://digital-world-2.myshopify.com/cdn/shop/files/banner1-home2_2000x_crop_center.png?v=1613166657" alt="banner-home-1" />
+            </div>
+            <div><img className="object-cover rounded-md" src="https://digital-world-2.myshopify.com/cdn/shop/files/banner2-home2_2000x_crop_center.png?v=1613166657" alt="banner-home-2" />
+            </div>
         </div>
     </div>)
 }

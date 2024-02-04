@@ -17,9 +17,9 @@ const ProductElement = (props: IProps) => {
     const [isShow, setIsShow] = useState<boolean>(false)
     return (
         <div key={product._id} className="pl-5">
-            <div className="border w-[240px] flex flex-col py-4 pl-4 relative rounded-md"
+            <div className="border flex flex-col py-4 pl-4 relative rounded-md"
                 onMouseEnter={() => { setIsShow(true) }} onMouseLeave={() => { setIsShow(false) }}>
-                <img src={product.thumb} alt="photo" className="w-full" />
+                <img src={product.thumb} alt="photo" />
                 {isShow && <div className="absolute bottom-[15%] flex gap-2 justify-center w-full animate-slide-top">
                     <SelectOption icon={<FaHeart />} />
                     <SelectOption icon={<IoMdMenu />} />

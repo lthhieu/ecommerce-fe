@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .active {
     color: #ee3131;
     padding-bottom: 12px;

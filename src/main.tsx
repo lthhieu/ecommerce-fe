@@ -4,6 +4,7 @@ import { Provider } from "react-redux"
 import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
+import Scrollbars from "react-custom-scrollbars-2"
 
 const container = document.getElementById("root")
 
@@ -13,7 +14,9 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <Scrollbars autoHide style={{ height: '100vh' }}>
+          <App />
+        </Scrollbars>
       </Provider>
     </React.StrictMode>,
   )

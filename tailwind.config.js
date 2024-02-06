@@ -32,14 +32,16 @@ export default {
         'price': '#333333',
         'product': '#2b3743',
         'yellow': '#ffb400',
-        'icon': '#2a2a2a'
+        'icon': '#2a2a2a',
+        'time': '#8d8d8d'
       },
       backgroundColor: {
         'red': '#ee3131',
         'white': '#ffffff',
         'yellow': '#ffb400',
         'info': '#00d5d5',
-        'icon': '#2a2a2a'
+        'icon': '#2a2a2a',
+        'time': '#f4f4f4'
       },
       borderColor: {
         'red': '#ee3131',

@@ -17,9 +17,9 @@ const DealDaily = () => {
         const response = await apiFetchProducts(`current=1&pageSize=100&totalRating=5`)
         if (response.data) {
             setDealDaily(response.data?.result[Math.floor(Math.random() * response.data?.meta.total) + 1])
-            setHours(dayjs().hour())
-            setMinutes(dayjs().minute())
-            setSeconds(dayjs().second())
+            setHours(23 - dayjs().hour())
+            setMinutes(59 - dayjs().minute())
+            setSeconds(59 - dayjs().second())
         }
     }
     useEffect(() => {
@@ -31,12 +31,12 @@ const DealDaily = () => {
             else {
                 if (minutes > 0) {
                     setMinutes(prev => prev - 1)
-                    setSeconds(59)
+                    setSeconds(59 - dayjs().second())
                 } else {
                     if (hours > 0) {
                         setHours(prev => prev - 1)
-                        setMinutes(59)
-                        setSeconds(59)
+                        setMinutes(59 - dayjs().minute())
+                        setSeconds(59 - dayjs().second())
                     } else {
                         setExpire(!expire)
                     }

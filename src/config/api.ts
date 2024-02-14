@@ -1,4 +1,4 @@
-import axios from './custom-axios'
+import axios from './custom.axios'
 import { IBackendRes, ICategories, IPagination, IProducts } from './data.type'
 
 export const apiFetchCategories = () => {

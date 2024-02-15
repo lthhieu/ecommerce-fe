@@ -22,12 +22,12 @@ const WrapperOne = () => {
     }, []);
 
     return (<div className="w-main flex py-5 gap-6"
-    ><div className="w-[30%] flex-col flex border">
-            <div className="px-5 py-3 text-lg bg-red text-white font-semibold flex gap-4 items-center"><FaListUl /> ALL COLLECTIONS</div>
+    ><div className="w-[30%] flex-col flex border rounded-md">
+            <div className="px-5 py-3 text-lg bg-red text-white font-semibold flex gap-4 items-center rounded-tl-md rounded-tr-md"><FaListUl /> ALL COLLECTIONS</div>
             {categories?.map(item => { return (<NavLink className={'px-5 py-3.5 text-collection flex items-center gap-4 hover:text-red'} to={item.slug} key={item._id}> <FaHeadphones />{item.title}</NavLink>) })}
         </div>
         <div className="w-[70%] h-[480px]">
-            <div className="w-full h-full"
+            <div className="w-full h-full rounded-md"
                 style={{ backgroundImage: "url('https://digital-world-2.myshopify.com/cdn/shop/files/slideshow3-home2_1920x.jpg?v=1613166679')", backgroundSize: 'cover' }}></div>
         </div>
     </div>)

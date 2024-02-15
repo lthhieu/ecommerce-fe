@@ -5,7 +5,7 @@ interface IProps {
 const CountDown = (props: IProps) => {
     const { unit, value } = props
     return (
-        <div className="flex-1 flex flex-col items-center bg-time py-[10px] px-[10px] text-tab">
+        <div className="flex-1 flex flex-col items-center bg-time py-[10px] px-[10px] text-ta rounded-md">
             <span className="font-semibold text-lg">{value}</span>
             <span className="text-xs text-time">{unit}</span>
         </div>

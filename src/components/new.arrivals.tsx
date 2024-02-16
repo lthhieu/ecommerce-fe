@@ -43,7 +43,7 @@ const NewArrivals = () => {
                 })}
             </div>
         </div>
-        <div className="mt-4 pr-1 -ml-5">
+        <div className="mt-6 pr-1 -ml-5">
             <Slider {...settings} >
                 {products.length > 0 && products.map(item => {
                     return (

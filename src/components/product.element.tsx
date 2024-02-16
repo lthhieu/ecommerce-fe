@@ -9,11 +9,12 @@ import { IoMdMenu } from "react-icons/io";
 
 interface IProps {
     product: IProducts,
-    activeTab: number
+    activeTab: number,
+    newArrival?: boolean
 }
 
 const ProductElement = (props: IProps) => {
-    const { product, activeTab } = props
+    const { product, activeTab, newArrival } = props
     const [isShow, setIsShow] = useState<boolean>(false)
     return (
         <div key={product._id} className="pl-5 animate-fade-in">
@@ -25,7 +26,7 @@ const ProductElement = (props: IProps) => {
                     <SelectOption icon={<IoMdMenu />} />
                     <SelectOption icon={<FaEye />} />
                 </div>}
-                <span className={`absolute top-0 left-0 ${activeTab === 1 ? 'bg-yellow' : 'bg-info'} px-3 py-[1px] rounded-md font-medium text-white`}>{activeTab === 1 ? 'Trending' : 'New'}</span>
+                {newArrival ? <></> : <span className={`absolute top-0 left-0 ${activeTab === 1 ? 'bg-yellow' : 'bg-info'} px-3 py-[1px] rounded-md font-medium text-white`}>{activeTab === 1 ? 'Trending' : 'New'}</span>}
                 <div className="flex flex-col gap-2 mt-4">
                     <span className="text-product line-clamp-1">{product.title}</span>
                     <div className="flex gap-1">{convertNumberToList(product.totalRating).map((product, index) => {

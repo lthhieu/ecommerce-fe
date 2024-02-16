@@ -33,7 +33,8 @@ export default {
         'product': '#2b3743',
         'yellow': '#ffb400',
         'icon': '#2a2a2a',
-        'time': '#8d8d8d'
+        'time': '#8d8d8d',
+        'collection': '#808080'
       },
       backgroundColor: {
         'red': '#ee3131',

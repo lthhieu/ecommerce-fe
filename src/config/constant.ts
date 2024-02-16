@@ -33,3 +33,8 @@ export const tab = [
     { id: 1, value: 'best seller' },
     { id: 2, value: 'new arrivals' }
 ]
+export const collections = [
+    { id: 1, value: 'smartphone' },
+    { id: 2, value: 'tablet' },
+    { id: 3, value: 'laptop' }
+]

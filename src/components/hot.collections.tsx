@@ -27,13 +27,11 @@ const HotCollections = () => {
             const data = res.data?.result
             const brands = data.map((element: IProducts) => element.brand);
 
-            let uniqueBrands: ICategories[] = [];
-
-            brands.forEach((item: ICategories) => {
-                if (!uniqueBrands.some((i: ICategories) => i._id === item._id)) {
-                    uniqueBrands.push(item)
-                }
-            });
+            let uniqueBrands: ICategories[] = brands.filter((value: ICategories, index: number, self: Array<ICategories>) =>
+                index === self.findIndex((t: ICategories) => (
+                    t._id === value._id
+                ))
+            )
             const collections: ICollections = {
                 category: {} as ICategories,
                 brands: []

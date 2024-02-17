@@ -7,6 +7,7 @@ export interface IBackendRes<T> {
 export interface ICategories {
     "_id": string,
     "title": string,
+    "image": string,
     "slug": string,
     "createdAt": string,
     "updatedAt": string,
@@ -46,4 +47,11 @@ export interface IProducts {
     "createdAt": string,
     "updatedAt": string,
     "__v": number
+}
+export interface ICollections {
+    category: ICategories,
+    brands: {
+        _id: string,
+        title: string
+    }[]
 }

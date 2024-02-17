@@ -6,6 +6,8 @@ import SelectOption from "./select.option";
 import { FaEye } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { path } from "@/config/constant";
 
 interface IProps {
     product: IProducts,
@@ -18,7 +20,7 @@ const ProductElement = (props: IProps) => {
     const [isShow, setIsShow] = useState<boolean>(false)
     return (
         <div key={product._id} className="pl-5 animate-fade-in">
-            <div className="border flex flex-col py-4 pl-4 relative rounded-md"
+            <Link to={`${path.PRODUCTS}/${product.slug}_${product._id}.html`} className="border flex flex-col py-4 pl-4 relative rounded-md"
                 onMouseEnter={() => { setIsShow(true) }} onMouseLeave={() => { setIsShow(false) }}>
                 <img src={product.thumb} alt="photo" />
                 {isShow && <div className="absolute bottom-[15%] flex gap-2 justify-center w-full animate-slide-top">
@@ -38,7 +40,7 @@ const ProductElement = (props: IProps) => {
                     })}</div>
                     <span className="text-price">{addCommas(removeNonNumeric(product.price))} VND</span>
                 </div>
-            </div>
+            </Link>
         </div>
     )
 }

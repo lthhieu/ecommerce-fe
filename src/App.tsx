@@ -4,12 +4,16 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/public/Home";
-import Contact from "./pages/public/Contact";
+import Products from "./pages/public/Products";
 import TopHeader from "./components/top.header";
 import Header from "./components/header";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
 import { path } from "./config/constant";
+import Blog from "./pages/public/Blog";
+import OurServices from "./pages/public/Our.Services";
+import Faq from "./pages/public/Faq";
+import DetailProduct from "./pages/public/Detail.Product";
 
 const LayoutClient = () => {
 
@@ -33,7 +37,20 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       {
         path: path.PRODUCTS,
-        element: <Contact />,
+        element: <Products />,
+      },
+      {
+        path: path.BLOGS,
+        element: <Blog />,
+      }, {
+        path: path.OUR_SERVICE,
+        element: <OurServices />,
+      }, {
+        path: path.FAQS,
+        element: <Faq />,
+      }, {
+        path: path.DETAIL_PRODUCT,
+        element: <DetailProduct />,
       },
     ],
   }

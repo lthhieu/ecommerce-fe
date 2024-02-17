@@ -3,7 +3,8 @@ export const path = {
     PRODUCTS: 'products',
     BLOGS: 'blogs',
     OUR_SERVICE: 'our-service',
-    FAQS: 'faqs'
+    FAQS: 'faqs',
+    DETAIL_PRODUCT: 'products/:id'
 }
 export const navigation = [
     {

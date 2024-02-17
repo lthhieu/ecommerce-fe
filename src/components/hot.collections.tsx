@@ -10,12 +10,15 @@ const HotCollections = () => {
     const categories = useAppSelector(selectData)
     const [collections, setCollections] = useState<ICollections[]>([])
 
+
     useEffect(() => {
         dispatch(fetchCategoriesAsync(null))
     }, []);
     useEffect(() => {
-        fetchCollections()
+        if (categories.length > 0)
+            fetchCollections()
     }, [categories])
+
 
     const fetchCollections = async () => {
         const result = []

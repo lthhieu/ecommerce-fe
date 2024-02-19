@@ -34,7 +34,9 @@ export default {
         'yellow': '#ffb400',
         'icon': '#2a2a2a',
         'time': '#8d8d8d',
-        'collection': '#808080'
+        'collection': '#808080',
+        'footer': '#b7b7b7',
+        'search': '#f9b0b0'
       },
       backgroundColor: {
         'red': '#ee3131',
@@ -42,7 +44,9 @@ export default {
         'yellow': '#ffb400',
         'info': '#00d5d5',
         'icon': '#2a2a2a',
-        'time': '#f4f4f4'
+        'time': '#f4f4f4',
+        'black': '#191919',
+        'dark': '#0f0f0f'
       },
       borderColor: {
         'red': '#ee3131',

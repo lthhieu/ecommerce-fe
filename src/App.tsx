@@ -14,7 +14,7 @@ import Blog from "./pages/public/Blog";
 import OurServices from "./pages/public/Our.Services";
 import Faq from "./pages/public/Faq";
 import DetailProduct from "./pages/public/Detail.Product";
-import Login from "./pages/public/Login";
+import LoginPage from "./pages/public/Login";
 
 const LayoutClient = () => {
 
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
   },
   {
     path: path.LOGIN,
-    element: <Login />
+    element: <LoginPage />
   }
 ]);
 const App = () => {

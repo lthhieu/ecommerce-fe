@@ -5,6 +5,9 @@ import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import Scrollbars from "react-custom-scrollbars-2"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const container = document.getElementById("root")
 
@@ -16,6 +19,7 @@ if (container) {
       <Provider store={store}>
         <Scrollbars autoHide style={{ height: '100vh' }}>
           <App />
+          <ToastContainer />
         </Scrollbars>
       </Provider>
     </React.StrictMode>,

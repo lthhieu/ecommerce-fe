@@ -1,8 +1,8 @@
 export interface IBackendRes<T> {
     data?: T,
-    message: string,
+    message: string | string[],
     statusCode: number,
-    error?: string | string[]
+    error?: string
 }
 export interface ICategories {
     "_id": string,
@@ -54,4 +54,19 @@ export interface ICollections {
         _id: string,
         title: string
     }[]
+}
+
+export interface IUser {
+    "_id"?: string,
+    "firstName": string,
+    "lastName": string,
+    "email": string,
+    "mobile": string,
+    "role"?: string,
+    "wishlist"?: [],
+    "isBlocked"?: boolean,
+    "cart"?: [],
+    "__v"?: number,
+    "createdAt"?: string,
+    "updatedAt"?: string
 }

@@ -14,6 +14,7 @@ import Blog from "./pages/public/Blog";
 import OurServices from "./pages/public/Our.Services";
 import Faq from "./pages/public/Faq";
 import DetailProduct from "./pages/public/Detail.Product";
+import Login from "./pages/public/Login";
 
 const LayoutClient = () => {
 
@@ -30,7 +31,7 @@ const LayoutClient = () => {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: path.HOME,
     element: <LayoutClient />,
     errorElement: <div>404 page not found</div>,
     children: [
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         element: <DetailProduct />,
       },
     ],
+  },
+  {
+    path: path.LOGIN,
+    element: <Login />
   }
 ]);
 const App = () => {

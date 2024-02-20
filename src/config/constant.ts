@@ -4,7 +4,8 @@ export const path = {
     BLOGS: 'blogs',
     OUR_SERVICE: 'our-service',
     FAQS: 'faqs',
-    DETAIL_PRODUCT: 'products/:id'
+    DETAIL_PRODUCT: 'products/:id',
+    LOGIN: 'login'
 }
 export const navigation = [
     {

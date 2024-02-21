@@ -1,5 +1,5 @@
 import axios from './custom.axios'
-import { IBackendRes, ICategories, IPagination, IProducts, IUser } from './data.type'
+import { IAccount, IBackendRes, ICategories, IPagination, IProducts, IUser } from './data.type'
 
 export const apiFetchCategories = () => {
     return axios.get<IBackendRes<ICategories[]>>('categories')
@@ -13,5 +13,5 @@ export const apiRegister = (data: IUser) => {
 }
 //auth
 export const apiLogin = (data: IUser) => {
-    return axios.post<IBackendRes<IUser>>('auth/login', { ...data })
+    return axios.post<IBackendRes<IAccount>>('auth/login', { ...data })
 }

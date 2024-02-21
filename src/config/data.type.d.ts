@@ -71,3 +71,19 @@ export interface IUser {
     "updatedAt"?: string,
     "username"?: string
 }
+export interface IAccount {
+    "access_token": string,
+    "user": {
+        "_id": string,
+        "firstName": string,
+        "lastName": string,
+        "email": string,
+        "mobile": string,
+        "wishlist": [],
+        "isBlocked": boolean,
+        "cart": [],
+        "__v": number,
+        "createdAt": string,
+        "updatedAt": string
+    }
+}

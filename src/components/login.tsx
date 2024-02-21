@@ -31,6 +31,7 @@ const Login = () => {
             if (!res.data) {
                 errorS(capitalizeFirstLetter(res.message))
             } else {
+                localStorage.setItem('access_token', res.data?.access_token);
                 navigate('/');
             }
         } else {

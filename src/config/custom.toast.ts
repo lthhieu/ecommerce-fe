@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
 
 export const successT = (mess: string) => toast.success(mess, {
     position: "top-right",
@@ -11,3 +12,10 @@ export const successT = (mess: string) => toast.success(mess, {
     progress: undefined,
     theme: "light",
 });
+
+export const errorS = (mess: string) => Swal.fire({
+    title: 'Error!',
+    text: mess,
+    icon: 'error',
+    confirmButtonText: 'OK'
+})

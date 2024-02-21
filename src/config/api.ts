@@ -11,3 +11,7 @@ export const apiFetchProducts = (query: string) => {
 export const apiRegister = (data: IUser) => {
     return axios.post<IBackendRes<IUser>>('users', { ...data })
 }
+//auth
+export const apiLogin = (data: IUser) => {
+    return axios.post<IBackendRes<IUser>>('auth/login', { ...data })
+}

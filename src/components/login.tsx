@@ -1,11 +1,11 @@
-import { apiRegister } from "@/config/api"
+import { apiLogin, apiRegister } from "@/config/api"
 import { capitalizeFirstLetter } from "@/config/helper"
 import { useState } from "react"
-import Swal from 'sweetalert2'
-import { toast } from 'react-toastify';
-import { successT } from "@/config/custom.toast";
+import { useNavigate } from "react-router-dom";
+import { errorS, successT } from "@/config/custom.toast";
 
 const Login = () => {
+    const navigate = useNavigate();
     const defaultDataSubmit = {
         firstName: '',
         lastName: '',
@@ -26,19 +26,19 @@ const Login = () => {
     }
     const handleSignIn = async () => {
         if (isLogin) {
-            const data = { email: dataSubmit.email, password: dataSubmit.password }
-            console.log(data)
+            const data = { username: dataSubmit.email, password: dataSubmit.password }
+            const res = await apiLogin(data)
+            if (!res.data) {
+                errorS(capitalizeFirstLetter(res.message))
+            } else {
+                navigate('/');
+            }
         } else {
             const res = await apiRegister(dataSubmit)
             if (!res.data) {
                 let mess = ''
                 res.message.forEach((i: string) => { mess += `${capitalizeFirstLetter(i)}, ` })
-                Swal.fire({
-                    title: 'Error!',
-                    text: mess,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                })
+                errorS(mess)
             } else {
                 setDataSubmit({
                     ...dataSubmit,

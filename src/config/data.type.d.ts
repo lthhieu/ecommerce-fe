@@ -58,15 +58,16 @@ export interface ICollections {
 
 export interface IUser {
     "_id"?: string,
-    "firstName": string,
-    "lastName": string,
-    "email": string,
-    "mobile": string,
+    "firstName"?: string,
+    "lastName"?: string,
+    "email"?: string,
+    "mobile"?: string,
     "role"?: string,
     "wishlist"?: [],
     "isBlocked"?: boolean,
     "cart"?: [],
     "__v"?: number,
     "createdAt"?: string,
-    "updatedAt"?: string
+    "updatedAt"?: string,
+    "username"?: string
 }

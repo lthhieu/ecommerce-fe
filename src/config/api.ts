@@ -15,3 +15,6 @@ export const apiRegister = (data: IUser) => {
 export const apiLogin = (data: IUser) => {
     return axios.post<IBackendRes<IAccount>>('auth/login', { ...data })
 }
+export const apiProfile = () => {
+    return axios.get<IBackendRes<IUser>>('auth/profile')
+}

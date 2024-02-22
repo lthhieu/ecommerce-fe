@@ -3,8 +3,11 @@ import { capitalizeFirstLetter } from "@/config/helper"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { errorS, successT } from "@/config/custom.toast";
+import { useAppDispatch } from "@/app/hooks";
+import { fetchProfileAsync } from "@/app/slice/profileSlice";
 
 const Login = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const defaultDataSubmit = {
         firstName: '',
@@ -27,13 +30,16 @@ const Login = () => {
     const handleSignIn = async () => {
         if (isLogin) {
             const data = { username: dataSubmit.email, password: dataSubmit.password }
-            const res = await apiLogin(data)
-            if (!res.data) {
-                errorS(capitalizeFirstLetter(res.message))
-            } else {
-                localStorage.setItem('access_token', res.data?.access_token);
-                navigate('/');
-            }
+            try {
+                const res = await apiLogin(data)
+                if (!res.data) {
+                    errorS(capitalizeFirstLetter(res?.message))
+                } else {
+                    localStorage.setItem('access_token', res.data?.access_token);
+                    dispatch(fetchProfileAsync(null))
+                    navigate('/');
+                }
+            } catch (err) { errorS(capitalizeFirstLetter('Oops! Something wrong happened')) }
         } else {
             const res = await apiRegister(dataSubmit)
             if (!res.data) {

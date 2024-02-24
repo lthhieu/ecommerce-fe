@@ -19,3 +19,10 @@ export const errorS = (mess: string) => Swal.fire({
     icon: 'error',
     confirmButtonText: 'OK'
 })
+
+export const successS = (mess: string) => Swal.fire({
+    title: 'Successfully!',
+    text: mess,
+    icon: 'success',
+    confirmButtonText: 'OK'
+})

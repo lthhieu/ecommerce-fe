@@ -5,7 +5,8 @@ export const path = {
     OUR_SERVICE: 'our-service',
     FAQS: 'faqs',
     DETAIL_PRODUCT: 'products/:id',
-    LOGIN: 'login'
+    LOGIN: 'login',
+    CONFIRM_EMAIL: ':confirm-email',
 }
 export const navigation = [
     {

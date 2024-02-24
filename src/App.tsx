@@ -15,6 +15,7 @@ import OurServices from "./pages/public/Our.Services";
 import Faq from "./pages/public/Faq";
 import DetailProduct from "./pages/public/Detail.Product";
 import LoginPage from "./pages/public/Login";
+import ConfirmEmail from "./pages/public/Confirm.Email";
 
 const LayoutClient = () => {
 
@@ -53,12 +54,16 @@ const router = createBrowserRouter([
         path: path.DETAIL_PRODUCT,
         element: <DetailProduct />,
       },
+      {
+        path: path.CONFIRM_EMAIL,
+        element: <ConfirmEmail />
+      }
     ],
   },
   {
     path: path.LOGIN,
     element: <LoginPage />
-  }
+  },
 ]);
 const App = () => {
   return (

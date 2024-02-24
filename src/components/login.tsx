@@ -1,10 +1,12 @@
 import { apiLogin, apiRegister } from "@/config/api"
 import { capitalizeFirstLetter } from "@/config/helper"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
-import { errorS, successT } from "@/config/custom.toast";
+import { Link, useNavigate } from "react-router-dom";
+import { errorS, successS, successT } from "@/config/custom.toast";
 import { useAppDispatch } from "@/app/hooks";
 import { fetchProfileAsync } from "@/app/slice/profileSlice";
+import { IoHomeOutline } from "react-icons/io5";
+import { path } from "@/config/constant";
 
 const Login = () => {
     const dispatch = useAppDispatch();
@@ -43,24 +45,27 @@ const Login = () => {
         } else {
             const res = await apiRegister(dataSubmit)
             if (!res.data) {
-                let mess = ''
-                res.message.forEach((i: string) => { mess += `${capitalizeFirstLetter(i)}, ` })
+                let mess = ""
+                if (res.message && Array.isArray(res.message)) {
+                    res.message.forEach((i: string, idx: number) => {
+                        if (idx === res.message.length - 1) { mess += `${capitalizeFirstLetter(i)}` }
+                        else mess += `${capitalizeFirstLetter(i)}, `
+                    })
+                } else { mess = res.message }
                 errorS(mess)
             } else {
-                setDataSubmit({
-                    ...dataSubmit,
-                    firstName: '',
-                    lastName: '',
-                    password: '',
-                    mobile: ''
-                })
+                setDataSubmit(defaultDataSubmit)
                 setIsLogin(true)
-                successT('Register successfully!')
+                successS('Confirm Email To Activate Your Account')
             }
         }
     }
     return (<div className="bg-white w-[40%] rounded-md p-8 border shadow-md flex flex-col items-center">
-        <div className="text-red text-2xl tracking-widest uppercase font-semibold mb-4">{isLogin ? 'login' : 'register'}</div>
+        <div className="text-red text-2xl tracking-widest uppercase font-semibold mb-4 flex justify-between w-full items-center">
+            <Link to={path.HOME}><IoHomeOutline /></Link>
+            <span>{isLogin ? 'login' : 'register'}</span>
+            <span><IoHomeOutline color="#fff" /></span>
+        </div>
         <div className="w-full">
             {!isLogin && <><div className="flex flex-col">
                 <span>First name</span>
@@ -68,7 +73,11 @@ const Login = () => {
             </div>
                 <div className="flex flex-col">
                     <span>Last name</span>
-                    <input value={dataSubmit.lastName} name='lastName' onChange={handleChangeInput} onKeyDown={handlePressEnter} type="text" className="p-2 my-2 outline-none border rounded-md" placeholder="Last name" />
+                    <input value={dataSubmit.lastName} name='lastName' onChange={handleChangeInput} type="text" className="p-2 my-2 outline-none border rounded-md" placeholder="Last name" />
+                </div>
+                <div className="flex flex-col">
+                    <span>Phone number</span>
+                    <input value={dataSubmit.mobile} name='mobile' onChange={handleChangeInput} type="text" className="p-2 my-2 outline-none border rounded-md" placeholder="Phone number" />
                 </div></>}
             <div className="flex flex-col">
                 <span>Email</span>
@@ -78,10 +87,6 @@ const Login = () => {
                 <span>Password</span>
                 <input value={dataSubmit.password} name='password' onChange={handleChangeInput} onKeyDown={handlePressEnter} type="password" className="p-2 my-2 outline-none border rounded-md" placeholder="Password" />
             </div>
-            {!isLogin && <div className="flex flex-col">
-                <span>Phone number</span>
-                <input value={dataSubmit.mobile} name='mobile' onChange={handleChangeInput} onKeyDown={handlePressEnter} type="text" className="p-2 my-2 outline-none border rounded-md" placeholder="Phone number" />
-            </div>}
         </div>
         <div className="w-full"><button onClick={handleSignIn} className="bg-red py-2 mt-4 rounded-md text-white uppercase tracking-wide w-full">{isLogin ? 'login' : 'register'}</button></div>
         <div className={`flex ${isLogin ? 'justify-between' : 'justify-center'} w-full mt-4 text-sm`}>

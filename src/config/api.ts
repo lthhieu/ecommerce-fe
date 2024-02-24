@@ -9,7 +9,10 @@ export const apiFetchProducts = (query: string) => {
 }
 //users
 export const apiRegister = (data: IUser) => {
-    return axios.post<IBackendRes<IUser>>('users', { ...data })
+    return axios.post<IBackendRes<any>>('users', { ...data })
+}
+export const apiConfirmEmail = (token: string) => {
+    return axios.post<IBackendRes<IUser>>(`users/confirm-email?token=${token}`)
 }
 //auth
 export const apiLogin = (data: IUser) => {

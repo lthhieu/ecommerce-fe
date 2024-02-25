@@ -16,6 +16,7 @@ import Faq from "./pages/public/Faq";
 import DetailProduct from "./pages/public/Detail.Product";
 import LoginPage from "./pages/public/Login";
 import ConfirmEmail from "./pages/public/Confirm.Email";
+import ResetPassword from "./pages/public/Reset.Password";
 
 const LayoutClient = () => {
 
@@ -53,8 +54,10 @@ const router = createBrowserRouter([
       }, {
         path: path.DETAIL_PRODUCT,
         element: <DetailProduct />,
-      },
-      {
+      }, {
+        path: path.RESET_PASSWORD,
+        element: <ResetPassword />,
+      }, {
         path: path.CONFIRM_EMAIL,
         element: <ConfirmEmail />
       }

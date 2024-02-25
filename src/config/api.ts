@@ -14,10 +14,17 @@ export const apiRegister = (data: IUser) => {
 export const apiConfirmEmail = (token: string) => {
     return axios.post<IBackendRes<IUser>>(`users/confirm-email?token=${token}`)
 }
+export const apiResetPassword = (token: string, password: string) => {
+    return axios.patch<IBackendRes<IUser>>(`users/reset-password?token=${token}`, { password })
+}
 //auth
 export const apiLogin = (data: IUser) => {
     return axios.post<IBackendRes<IAccount>>('auth/login', { ...data })
 }
 export const apiProfile = () => {
     return axios.get<IBackendRes<IUser>>('auth/profile')
+}
+//mail
+export const apiForgotPassword = (email: string) => {
+    return axios.get<IBackendRes<any>>(`mail/forgot-password?email=${email}`)
 }

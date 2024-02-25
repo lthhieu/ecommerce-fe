@@ -1,5 +1,5 @@
-import { apiLogin, apiRegister } from "@/config/api"
-import { capitalizeFirstLetter } from "@/config/helper"
+import { apiForgotPassword, apiLogin, apiRegister } from "@/config/api"
+import { capitalizeFirstLetter, convertMess } from "@/config/helper"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { errorS, successS, successT } from "@/config/custom.toast";
@@ -7,6 +7,8 @@ import { useAppDispatch } from "@/app/hooks";
 import { fetchProfileAsync } from "@/app/slice/profileSlice";
 import { IoHomeOutline } from "react-icons/io5";
 import { path } from "@/config/constant";
+import Swal from 'sweetalert2'
+
 
 const Login = () => {
     const dispatch = useAppDispatch();
@@ -35,7 +37,7 @@ const Login = () => {
             try {
                 const res = await apiLogin(data)
                 if (!res.data) {
-                    errorS(capitalizeFirstLetter(res?.message))
+                    errorS(capitalizeFirstLetter(convertMess(res.message)));
                 } else {
                     localStorage.setItem('access_token', res.data?.access_token);
                     dispatch(fetchProfileAsync(null))
@@ -45,20 +47,43 @@ const Login = () => {
         } else {
             const res = await apiRegister(dataSubmit)
             if (!res.data) {
-                let mess = ""
-                if (res.message && Array.isArray(res.message)) {
-                    res.message.forEach((i: string, idx: number) => {
-                        if (idx === res.message.length - 1) { mess += `${capitalizeFirstLetter(i)}` }
-                        else mess += `${capitalizeFirstLetter(i)}, `
-                    })
-                } else { mess = res.message }
-                errorS(mess)
+                errorS(capitalizeFirstLetter(convertMess(res.message)));
             } else {
                 setDataSubmit(defaultDataSubmit)
                 setIsLogin(true)
                 successS('Confirm Email To Activate Your Account')
             }
         }
+    }
+    const handleClick = () => {
+        Swal.fire({
+            title: "Please enter your email",
+            input: "text",
+            inputAttributes: {
+                autocapitalize: "off"
+            },
+            showCancelButton: true,
+            confirmButtonText: "Confirm",
+            showLoaderOnConfirm: true,
+            preConfirm: async (email) => {
+                try {
+                    const response = await apiForgotPassword(email);
+                    if (!response.data) {
+                        return Swal.showValidationMessage(capitalizeFirstLetter(response.message));
+                    }
+                    return response;
+                } catch (error) {
+                    Swal.showValidationMessage(`
+                  Request failed: ${error}
+                `);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                successS('Please check your email to reset password !')
+            }
+        });
     }
     return (<div className="bg-white w-[40%] rounded-md p-8 border shadow-md flex flex-col items-center">
         <div className="text-red text-2xl tracking-widest uppercase font-semibold mb-4 flex justify-between w-full items-center">
@@ -90,7 +115,7 @@ const Login = () => {
         </div>
         <div className="w-full"><button onClick={handleSignIn} className="bg-red py-2 mt-4 rounded-md text-white uppercase tracking-wide w-full">{isLogin ? 'login' : 'register'}</button></div>
         <div className={`flex ${isLogin ? 'justify-between' : 'justify-center'} w-full mt-4 text-sm`}>
-            {isLogin && <><span className="hover:text-red">Forgot your password?</span>
+            {isLogin && <><span className="hover:text-red cursor-pointer" onClick={handleClick}>Forgot your password?</span>
                 <span onClick={() => { setIsLogin(false); setDataSubmit(defaultDataSubmit) }} className="hover:text-red cursor-pointer">Create account</span></>}
             {!isLogin && <span onClick={() => { setIsLogin(true); setDataSubmit(defaultDataSubmit) }} className="hover:text-red cursor-pointer">Go Login</span>}
         </div>

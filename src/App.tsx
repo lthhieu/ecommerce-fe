@@ -17,6 +17,7 @@ import DetailProduct from "./pages/public/Detail.Product";
 import LoginPage from "./pages/public/Login";
 import ConfirmEmail from "./pages/public/Confirm.Email";
 import ResetPassword from "./pages/public/Reset.Password";
+import RegisterPage from "./pages/public/Register";
 
 const LayoutClient = () => {
 
@@ -62,10 +63,12 @@ const router = createBrowserRouter([
         element: <ConfirmEmail />
       }
     ],
-  },
-  {
+  }, {
     path: path.LOGIN,
     element: <LoginPage />
+  }, {
+    path: path.REGISTER,
+    element: <RegisterPage />
   },
 ]);
 const App = () => {

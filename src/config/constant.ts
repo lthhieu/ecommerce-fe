@@ -7,7 +7,8 @@ export const path = {
     DETAIL_PRODUCT: 'products/:id',
     LOGIN: 'login',
     CONFIRM_EMAIL: '/confirm-email',
-    RESET_PASSWORD: '/reset-password'
+    RESET_PASSWORD: '/reset-password',
+    REGISTER: 'register',
 }
 export const navigation = [
     {

@@ -73,6 +73,23 @@ export const profileSlice = createAppSlice({
                 },
             },
         ),
+        logoutAction: create.reducer(
+            (state, action) => {
+                localStorage.removeItem('access_token');
+                state.isAuthenticated = false;
+                state.user._id = "";
+                state.user.firstName = "";
+                state.user.lastName = "";
+                state.user.email = "";
+                state.user.mobile = "";
+                state.user.wishlist = [];
+                state.user.isBlocked = false;
+                state.user.cart = [];
+                state.user.__v = 0;
+                state.user.createdAt = "";
+                state.user.createdAt = ""
+            }
+        ),
     }),
     // You can define your selectors here. These selectors receive the slice
     // state as their first argument.
@@ -83,7 +100,7 @@ export const profileSlice = createAppSlice({
 })
 
 // Action creators are generated for each case reducer function.
-export const { fetchProfileAsync } =
+export const { fetchProfileAsync, logoutAction } =
     profileSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.

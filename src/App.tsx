@@ -18,6 +18,9 @@ import LoginPage from "./pages/public/Login";
 import ConfirmEmail from "./pages/public/Confirm.Email";
 import ResetPassword from "./pages/public/Reset.Password";
 import RegisterPage from "./pages/public/Register";
+import { useAppDispatch } from "./app/hooks";
+import { useEffect } from "react";
+import { fetchProfileAsync } from "./app/slice/profileSlice";
 
 const LayoutClient = () => {
 
@@ -72,6 +75,17 @@ const router = createBrowserRouter([
   },
 ]);
 const App = () => {
+  const dispatch = useAppDispatch();
+
+
+  useEffect(() => {
+    if (
+      window.location.pathname === '/login'
+      || window.location.pathname === '/register'
+    )
+      return;
+    dispatch(fetchProfileAsync(null))
+  }, [])
   return (
     <RouterProvider router={router} />
   )

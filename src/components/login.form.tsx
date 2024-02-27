@@ -18,7 +18,7 @@ const LoginForm = () => {
     const navigate = useNavigate();
     return (
         <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: 'admin@gmail.com', password: '123456' }}
             validationSchema={Yup.object({
                 email: Yup.string().email('Invalid email address').required('Required'),
                 password: Yup.string().required('Required'),

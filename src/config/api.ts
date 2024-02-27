@@ -24,6 +24,9 @@ export const apiLogin = (data: IUser) => {
 export const apiProfile = () => {
     return axios.get<IBackendRes<IUser>>('auth/profile')
 }
+export const apiLogout = () => {
+    return axios.post<IBackendRes<string>>('auth/logout')
+}
 //mail
 export const apiForgotPassword = (email: string) => {
     return axios.get<IBackendRes<any>>(`mail/forgot-password?email=${email}`)

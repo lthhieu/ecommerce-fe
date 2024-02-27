@@ -29,3 +29,4 @@ export const convertMess = (mess: string | string[]) => {
     } else { result = mess }
     return result
 }
+export const phoneRegExp = /^(0(32|33|34|35|36|37|38|39|52|56|58|59|70|76|77|78|79|81|82|83|84|85|88|99)\d{7})$/gm

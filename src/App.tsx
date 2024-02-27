@@ -79,11 +79,6 @@ const App = () => {
 
 
   useEffect(() => {
-    if (
-      window.location.pathname === '/login'
-      || window.location.pathname === '/register'
-    )
-      return;
     dispatch(fetchProfileAsync(null))
   }, [])
   return (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { path } from "@/config/constant";
-import RegisterForm from "./register.form";
+import RegisterForm from "./register.form/register.form";
 
 
 const Register = () => {

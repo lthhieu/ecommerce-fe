@@ -46,7 +46,8 @@ export default {
         'icon': '#2a2a2a',
         'time': '#f4f4f4',
         'black': '#191919',
-        'dark': '#0f0f0f'
+        'dark': '#0f0f0f',
+        'grey': '#f7f7f7'
       },
       borderColor: {
         'red': '#ee3131',

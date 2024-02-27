@@ -4,7 +4,7 @@ import { addCommas, convertNumberToList, removeNonNumeric } from "@/config/helpe
 import { useEffect, useState } from "react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
-import CountDown from "./countdown";
+import CountDown from "./countdown/countdown";
 import dayjs from "dayjs";
 
 const DealDaily = () => {

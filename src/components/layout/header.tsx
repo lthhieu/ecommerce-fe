@@ -1,11 +1,11 @@
-import logo from '../assets/logo_digital_new_250x.png'
+import logo from 'assets/logo_digital_new_250x.png'
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GoHeart } from "react-icons/go";
 import { HiShoppingBag } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
 const Header = () => {
-    return (<div className="w-main border-b h-[100px] py-[35px] px-5"
+    return (<div className="w-main border-b h-[100px] py-[35px]"
     ><div className="w-full flex justify-between">
             <div className="w-[25%]"><Link to={'/'}><img src={logo} alt='digital-world' /></Link></div>
             <div className="w-[75%] flex items-center justify-end gap-5 text-black">

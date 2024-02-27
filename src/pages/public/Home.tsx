@@ -1,8 +1,8 @@
-import FeatureProduct from "@/components/feature.products"
-import WrapperOne from "../../components/wrapper.one"
-import WrapperTwo from "../../components/wrapper.two"
-import NewArrivals from "@/components/new.arrivals"
-import HotCollections from "@/components/hot.collections"
+import FeatureProduct from "@/components/home/feature.products/feature.products"
+import WrapperOne from "../../components/home/wrapper.one"
+import WrapperTwo from "../../components/home/wrapper.two/wrapper.two"
+import NewArrivals from "@/components/home/new.arrivals"
+import HotCollections from "@/components/home/hot.collections"
 
 const Home = () => {
     return (<div>

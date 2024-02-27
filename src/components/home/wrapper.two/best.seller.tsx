@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import ProductElement from "./product.element";
+import ProductElement from "@/components/utils/product.element/product.element";
 const BestSeller = () => {
     const [bestSeller, setBestSeller] = useState<IProducts[]>([])
     const [newArrivals, setNewArrivals] = useState<IProducts[]>([])

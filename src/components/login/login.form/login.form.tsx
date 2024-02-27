@@ -2,7 +2,7 @@
 import { useAppDispatch } from '@/app/hooks';
 import { fetchProfileAsync } from '@/app/slice/profileSlice';
 import { apiLogin } from '@/config/api';
-import { MyTextInput } from '@/components/custom.formik';
+import { MyTextInput } from '@/components/utils/custom.formik';
 import { errorS } from '@/config/custom.toast';
 import { capitalizeFirstLetter, convertMess } from '@/config/helper';
 import { Formik, Form } from 'formik';

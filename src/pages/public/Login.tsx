@@ -1,5 +1,5 @@
 import { selectIsAuthenticated } from "@/app/slice/profileSlice";
-import Login from "@/components/login"
+import Login from "@/components/login/login"
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 

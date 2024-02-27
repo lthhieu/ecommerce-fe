@@ -5,7 +5,7 @@ import { successS } from "@/config/custom.toast";
 import { IoHomeOutline } from "react-icons/io5";
 import { path } from "@/config/constant";
 import Swal from 'sweetalert2'
-import LoginForm from "./login.form";
+import LoginForm from "./login.form/login.form";
 
 
 const Login = () => {

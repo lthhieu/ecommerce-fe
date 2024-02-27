@@ -5,10 +5,10 @@ import {
 } from "react-router-dom";
 import Home from "./pages/public/Home";
 import Products from "./pages/public/Products";
-import TopHeader from "./components/top.header";
-import Header from "./components/header";
-import Navigation from "./components/navigation";
-import Footer from "./components/footer";
+import TopHeader from "./components/layout/top.header";
+import Header from "./components/layout/header";
+import Navigation from "./components/layout/navigation";
+import Footer from "./components/layout/footer";
 import { path } from "./config/constant";
 import Blog from "./pages/public/Blog";
 import OurServices from "./pages/public/Our.Services";

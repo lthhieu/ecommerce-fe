@@ -2,7 +2,7 @@ import { IProducts } from "@/config/data.type"
 import { useState } from "react"
 import { addCommas, convertNumberToList, removeNonNumeric } from "@/config/helper";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import SelectOption from "./select.option";
+import SelectOption from "./select.option/select.option";
 import { FaEye } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";

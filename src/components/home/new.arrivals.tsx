@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { apiFetchProducts } from "@/config/api"
 import { IProducts } from "@/config/data.type"
 import Slider from "react-slick"
-import ProductElement from "./product.element"
+import ProductElement from "../utils/product.element/product.element"
 const NewArrivals = () => {
     const [activeTab, setActiveTab] = useState<number>(0)
     const [products, setProducts] = useState<IProducts[]>([])

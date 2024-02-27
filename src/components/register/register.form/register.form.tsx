@@ -1,6 +1,6 @@
 
 import { apiRegister } from '@/config/api';
-import { MyCheckbox, MyTextInput } from '@/components/custom.formik';
+import { MyCheckbox, MyTextInput } from '@/components/utils/custom.formik';
 import { errorS, successS } from '@/config/custom.toast';
 import { capitalizeFirstLetter, convertMess, phoneRegExp } from '@/config/helper';
 import { Formik, Form } from 'formik';

@@ -1,7 +1,7 @@
 import { apiFetchProducts } from "@/config/api"
 import { IProducts } from "@/config/data.type"
 import { useEffect, useState } from "react"
-import ProductCard from "./product.card"
+import ProductCard from "./product.card/product.card"
 
 const FeatureProduct = () => {
     const [features, setFeatures] = useState<IProducts[]>([])

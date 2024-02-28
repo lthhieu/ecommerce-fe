@@ -7,15 +7,18 @@ interface IProp {
 }
 const Breadcrumbs = (prop: IProp) => {
     const { nameProduct } = prop
+    const DynamicProductBreadcrumb = () => (
+        <span className='text-black'>{nameProduct}</span>
+    );
     const routes = [
-        { path: path.DETAIL_PRODUCT, breadcrumb: nameProduct || 'Name\'s product' }
+        { path: path.DETAIL_PRODUCT, breadcrumb: DynamicProductBreadcrumb || 'Name\'s product' }
     ];
     const breadcrumbs = useBreadcrumbs(routes);
     return (
-        <span className='text-sm text-black flex'>{breadcrumbs.map(({ match, breadcrumb }, index) => {
+        <span className='text-sm text-[#1c1d1d] flex'>{breadcrumbs.map(({ match, breadcrumb }, index) => {
             return (
-                <Link className='flex items-center' key={match.pathname} to={match.pathname}>
-                    {index !== 0 && <IoMdArrowDropright />}{breadcrumb}
+                <Link className='flex items-center hover:text-red' key={match.pathname} to={match.pathname}>
+                    {breadcrumb}{index !== breadcrumbs.length - 1 && <IoMdArrowDropright />}
                 </Link>
             )
         })}</span>)

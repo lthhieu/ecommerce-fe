@@ -4,8 +4,12 @@ import { IAccount, IBackendRes, ICategories, IPagination, IProducts, IUser } fro
 export const apiFetchCategories = () => {
     return axios.get<IBackendRes<ICategories[]>>('categories')
 }
+//products
 export const apiFetchProducts = (query: string) => {
     return axios.get<IBackendRes<IPagination<IProducts[]>>>(`products?${query}`)
+}
+export const apiFetchProductById = (id: string) => {
+    return axios.get<IBackendRes<IProducts>>(`products/${id}`)
 }
 //users
 export const apiRegister = (data: IUser) => {

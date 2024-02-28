@@ -4,7 +4,7 @@ export const path = {
     BLOGS: 'blogs',
     OUR_SERVICE: 'our-service',
     FAQS: 'faqs',
-    DETAIL_PRODUCT: 'products/:id',
+    DETAIL_PRODUCT: ':products/:id',
     LOGIN: 'login',
     CONFIRM_EMAIL: '/confirm-email',
     RESET_PASSWORD: '/reset-password',

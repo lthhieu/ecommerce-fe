@@ -13,6 +13,9 @@ export interface ICategories {
     "updatedAt"?: string,
     "__v"?: number
 }
+export interface ICategoriesWithIcons extends ICategories {
+    icon: JSXElement
+}
 
 export interface IPagination<T> {
     "meta": {
@@ -27,7 +30,7 @@ export interface IProducts {
     "_id": string,
     "title": string,
     "slug": string,
-    "description": string | string[],
+    "description": string[],
     "brand": {
         "_id": string,
         "title": string

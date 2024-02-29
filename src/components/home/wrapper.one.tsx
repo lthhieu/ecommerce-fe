@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom";
 import { FaListUl } from "react-icons/fa6";
 import { FaHeadphones } from "react-icons/fa6";
@@ -10,21 +10,29 @@ import { FiPrinter } from "react-icons/fi";
 import { CgMusicSpeaker } from "react-icons/cg";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import { fetchCategoriesAsync, selectData, selectStatus } from "app/slice/categoriesSlice";
+import { fetchCategoriesAsync, selectData } from "app/slice/categoriesSlice";
+import { ICategories, ICategoriesWithIcons } from "@/config/data.type";
 
 const WrapperOne = () => {
     const dispatch = useAppDispatch();
-    const status = useAppSelector(selectStatus)
     const categories = useAppSelector(selectData)
-
+    const icons = [<FiPrinter size={22} />, <FaTabletScreenButton size={22} />, <FaLaptopCode size={22} />, <PiTelevisionSimpleBold size={22} />, <FiSmartphone size={22} />, <FaHeadphones size={22} />, <FaCamera size={22} />, <CgMusicSpeaker size={22} />]
+    const [categoriesWithIcons, setCategoriesWithIcons] = useState<ICategoriesWithIcons[] | []>([])
     useEffect(() => {
         dispatch(fetchCategoriesAsync(null))
     }, []);
+    useEffect(() => {
+        if (categories.length > 0) {
+            setCategoriesWithIcons(categories.map((i: ICategories, idx: number) => {
+                return { ...i, icon: icons[idx] }
+            }))
+        }
+    }, [categories])
 
     return (<div className="w-main flex py-5 gap-6"
     ><div className="w-[30%] flex-col flex border rounded-md">
             <div className="px-5 py-3 text-lg bg-red text-white font-semibold flex gap-4 items-center rounded-tl-md rounded-tr-md"><FaListUl /> ALL COLLECTIONS</div>
-            {categories?.map(item => { return (<NavLink className={'px-5 py-3.5 text-collection flex items-center gap-4 hover:text-red'} to={item.slug} key={item._id}> <FaHeadphones />{item.title}</NavLink>) })}
+            {categoriesWithIcons?.map(item => { return (<NavLink className={'px-5 py-3.5 text-collection flex items-center gap-6 hover:text-red'} to={item.slug || '/'} key={item._id}> {item.icon}{item.title}</NavLink>) })}
         </div>
         <div className="w-[70%] h-[480px]">
             <div className="w-full h-full rounded-md"

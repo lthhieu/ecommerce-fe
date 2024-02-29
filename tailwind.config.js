@@ -36,7 +36,8 @@ export default {
         'time': '#8d8d8d',
         'collection': '#808080',
         'footer': '#b7b7b7',
-        'search': '#f9b0b0'
+        'search': '#f9b0b0',
+        'sub': '#999'
       },
       backgroundColor: {
         'red': '#ee3131',
@@ -47,11 +48,15 @@ export default {
         'time': '#f4f4f4',
         'black': '#191919',
         'dark': '#0f0f0f',
-        'grey': '#f7f7f7'
+        'grey': '#f7f7f7',
+        'extra': '#505050',
+        'quantity': '#f6f6f6'
       },
       borderColor: {
         'red': '#ee3131',
-        'icon': '#2a2a2a'
+        'icon': '#2a2a2a',
+        'extra': '#ebebeb',
+        'quantity': '#343535'
       },
       keyframes: {
         'slide-top': {

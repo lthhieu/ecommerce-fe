@@ -1,4 +1,4 @@
-import { apiFetchProductById, apiFetchProducts } from '@/config/api';
+import { apiFetchProductById } from '@/config/api';
 import { IProducts } from '@/config/data.type';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -10,20 +10,13 @@ import { FaSquare } from "react-icons/fa";
 import ExtraInfo from '../utils/extra.info';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { fetchCategoriesAsync, selectData } from '@/app/slice/categoriesSlice';
-import Slider from 'react-slick';
-import ProductElement from '../utils/product.element/product.element';
+import OtherCustomerAlsoBuy from './other.customer.also.buy';
 
 
-const Product = () => {
-    const dispatch = useAppDispatch();
-    const categories = useAppSelector(selectData)
-
-    let { id, products } = useParams();
-    const pid = id?.split('_')[1].split('.')[0] || '';
+const DetailProduct = () => {
+    let { id } = useParams();
+    let pid = id?.split('_')[1].split('.')[0] || '';
     const [product, setProduct] = useState<IProducts | null>(null)
-    const [productByPrice, setProductByPrice] = useState<IProducts[] | null>(null)
     const [quantity, setQuantity] = useState<number>(1)
     const [images, setImages] = useState([])
     const [active, setActive] = useState<number>(1)
@@ -34,14 +27,7 @@ const Product = () => {
     ]
     useEffect(() => {
         fetchProduct()
-    }, [])
-    useEffect(() => {
-        if (categories.length > 0)
-            fetchProductsByPrice()
-    }, [categories])
-    useEffect(() => {
-        dispatch(fetchCategoriesAsync(null))
-    }, []);
+    }, [pid])
     const fetchProduct = async () => {
         const res = await apiFetchProductById(pid)
         if (res.data) {
@@ -51,13 +37,6 @@ const Product = () => {
             setImages(res.data?.images.map((i: string) => {
                 return { original: i, thumbnail: i }
             }))
-        }
-    }
-    const fetchProductsByPrice = async () => {
-        const result = categories.find(i => i.slug === products)
-        const res = await apiFetchProducts(`current=1&pageSize=5&&sort=-price&category=${result?._id}`)
-        if (res.data) {
-            setProductByPrice(res.data?.result)
         }
     }
     const calc = (sign: string) => {
@@ -74,13 +53,6 @@ const Product = () => {
             }
         }
     }
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1
-    };
     return (<>
         <div className='w-full flex justify-center bg-grey mb-5'>
             <div className='w-main py-4 flex flex-col gap-2'>
@@ -148,20 +120,7 @@ const Product = () => {
 
             </Tabs>
         </div>
-        <div className='w-main'>
-            <div className="py-4 border-b-2 border-red w-full mt-2">
-                <span className="capitalize text-xl text-tab font-semibold">
-                    Other customers also buy</span>
-            </div>
-            <div className="my-6 pr-1 -ml-5">
-                <Slider {...settings} >
-                    {productByPrice && productByPrice.length > 0 && productByPrice.map(item => {
-                        return (
-                            <ProductElement key={item._id} product={item} newArrival={true} />
-                        )
-                    })}
-                </Slider>
-            </div>
-        </div></>)
+        <OtherCustomerAlsoBuy />
+    </>)
 }
-export default Product
+export default DetailProduct

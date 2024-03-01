@@ -4,7 +4,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/public/Home";
-import Products from "./pages/public/Products";
 import TopHeader from "./components/layout/top.header";
 import Header from "./components/layout/header";
 import Navigation from "./components/layout/navigation";
@@ -21,6 +20,7 @@ import RegisterPage from "./pages/public/Register";
 import { useAppDispatch } from "./app/hooks";
 import { useEffect } from "react";
 import { fetchProfileAsync } from "./app/slice/profileSlice";
+import CategoryPage from "./pages/public/Category";
 
 const LayoutClient = () => {
 
@@ -43,8 +43,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       {
-        path: path.PRODUCTS,
-        element: <Products />,
+        path: path.CATEGORY,
+        element: <CategoryPage />,
       },
       {
         path: path.BLOGS,

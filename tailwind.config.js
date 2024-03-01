@@ -50,7 +50,8 @@ export default {
         'dark': '#0f0f0f',
         'grey': '#f7f7f7',
         'extra': '#505050',
-        'quantity': '#f6f6f6'
+        'quantity': '#f6f6f6',
+        'ex-info': '#f1f1f1'
       },
       borderColor: {
         'red': '#ee3131',

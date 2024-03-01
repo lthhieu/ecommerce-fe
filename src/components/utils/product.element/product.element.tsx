@@ -7,11 +7,10 @@ import { FaEye } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { path } from "@/config/constant";
 
 interface IProps {
     product: IProducts,
-    activeTab: number,
+    activeTab?: number,
     newArrival?: boolean
 }
 

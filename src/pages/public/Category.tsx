@@ -1,5 +1,5 @@
 import Category from "@/components/category/category"
 const CategoryPage = () => {
-    return (<div><Category /></div>)
+    return (<><Category /></>)
 }
 export default CategoryPage

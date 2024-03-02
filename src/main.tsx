@@ -17,10 +17,10 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <Scrollbars autoHide style={{ height: '100vh' }}>
-          <App />
-          <ToastContainer />
-        </Scrollbars>
+        {/* <Scrollbars autoHide style={{ height: '100vh' }}> */}
+        <App />
+        <ToastContainer />
+        {/* </Scrollbars> */}
       </Provider>
     </React.StrictMode>,
   )

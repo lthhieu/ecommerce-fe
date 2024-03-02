@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
+  useLocation,
 } from "react-router-dom";
 import Home from "./pages/public/Home";
 import TopHeader from "./components/layout/top.header";
@@ -23,7 +24,10 @@ import { fetchProfileAsync } from "./app/slice/profileSlice";
 import CategoryPage from "./pages/public/Category";
 
 const LayoutClient = () => {
-
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }, [pathname])
   return (
     <div className="flex flex-col items-center">
       <TopHeader />
@@ -77,12 +81,12 @@ const router = createBrowserRouter([
 const App = () => {
   const dispatch = useAppDispatch();
 
-
   useEffect(() => {
     dispatch(fetchProfileAsync(null))
   }, [])
   return (
     <RouterProvider router={router} />
+
   )
 }
 

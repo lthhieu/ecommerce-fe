@@ -22,6 +22,7 @@ import { useAppDispatch } from "./app/hooks";
 import { useEffect } from "react";
 import { fetchProfileAsync } from "./app/slice/profileSlice";
 import CategoryPage from "./pages/public/Category";
+import { fetchCategoriesAsync } from "./app/slice/categoriesSlice";
 
 const LayoutClient = () => {
   const { pathname } = useLocation()
@@ -83,6 +84,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchProfileAsync(null))
+    dispatch(fetchCategoriesAsync(null))
   }, [])
   return (
     <RouterProvider router={router} />

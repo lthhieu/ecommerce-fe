@@ -9,8 +9,8 @@ interface IProps {
     price: number,
 }
 const ProductCard = (props: IProps) => {
-    const { price, thumb, title, totalRating, index } = props
-    return (<div className={`w-[32%] pt-6 `}>
+    const { price, thumb, title, totalRating } = props
+    return (<div className={`pt-6`}>
         <div className="border rounded-md p-4 flex gap-8">
             <img src={thumb} width={90} height={90} alt={title} />
             <div className="flex flex-col gap-2 mt-4">

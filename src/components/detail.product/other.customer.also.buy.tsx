@@ -1,14 +1,13 @@
 
 import Slider from 'react-slick';
 import ProductElement from '../utils/product.element/product.element';
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { fetchCategoriesAsync, selectData } from '@/app/slice/categoriesSlice';
+import { useAppSelector } from '@/app/hooks';
+import { selectData } from '@/app/slice/categoriesSlice';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { IProducts } from '@/config/data.type';
 import { apiFetchProducts } from '@/config/api';
 const OtherCustomerAlsoBuy = () => {
-    const dispatch = useAppDispatch();
     const categories = useAppSelector(selectData)
     const [productByPrice, setProductByPrice] = useState<IProducts[] | null>(null)
     let { category } = useParams();
@@ -16,9 +15,6 @@ const OtherCustomerAlsoBuy = () => {
         if (categories.length > 0)
             fetchProductsByPrice()
     }, [categories])
-    useEffect(() => {
-        dispatch(fetchCategoriesAsync(null))
-    }, []);
     const fetchProductsByPrice = async () => {
         const result = categories.find(i => i.slug === category)
         const res = await apiFetchProducts(`current=1&pageSize=5&&sort=-price&category=${result?._id}`)

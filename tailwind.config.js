@@ -57,7 +57,8 @@ export default {
         'red': '#ee3131',
         'icon': '#2a2a2a',
         'extra': '#ebebeb',
-        'quantity': '#343535'
+        'quantity': '#343535',
+        'filter': '#e5e5e5',
       },
       keyframes: {
         'slide-top': {

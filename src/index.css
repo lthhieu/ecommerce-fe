@@ -7,6 +7,8 @@
 body {
     margin: 0;
     padding: 0;
+    color: #505050;
+    font: 400 14px/1.45 Poppins;
 }
 
 .active {
@@ -52,4 +54,39 @@ button.slick-prev {
 button.slick-next {
     top: 40%;
     right: 50px
+}
+
+.my-masonry-grid {
+    display: -webkit-box;
+    /* Not needed if autoprefixing */
+    display: -ms-flexbox;
+    /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px;
+    /* gutter size offset */
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    padding-left: 10px;
+    /* gutter size */
+    background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column>div {
+    /* change div to reference your elements you put in <Masonry> */
+    /* background: grey; */
+    margin-bottom: 20px;
+}
+
+
+.custom-feature .my-masonry-grid {
+    margin-left: -10px;
+}
+
+.custom-feature .my-masonry-grid_column>div {
+    /* change div to reference your elements you put in <Masonry> */
+    /* background: grey; */
+    margin-bottom: 0px;
 }

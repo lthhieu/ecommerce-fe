@@ -1,19 +1,15 @@
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { fetchCategoriesAsync, selectData } from "@/app/slice/categoriesSlice";
+import { useAppSelector } from "@/app/hooks";
+import { selectData } from "@/app/slice/categoriesSlice";
 import { apiFetchProducts } from "@/config/api";
 import { ICategories, ICollections, IProducts } from "@/config/data.type";
 import { IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 
+
 const HotCollections = () => {
-    const dispatch = useAppDispatch();
     const categories = useAppSelector(selectData)
     const [collections, setCollections] = useState<ICollections[]>([])
 
-
-    useEffect(() => {
-        dispatch(fetchCategoriesAsync(null))
-    }, []);
     useEffect(() => {
         if (categories.length > 0)
             fetchCollections()

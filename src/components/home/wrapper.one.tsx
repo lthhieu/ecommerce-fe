@@ -9,18 +9,15 @@ import { FaCamera } from "react-icons/fa";
 import { FiPrinter } from "react-icons/fi";
 import { CgMusicSpeaker } from "react-icons/cg";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
-import { useAppDispatch, useAppSelector } from "app/hooks";
-import { fetchCategoriesAsync, selectData } from "app/slice/categoriesSlice";
+import { useAppSelector } from "app/hooks";
+import { selectData } from "app/slice/categoriesSlice";
 import { ICategories, ICategoriesWithIcons } from "@/config/data.type";
 
 const WrapperOne = () => {
-    const dispatch = useAppDispatch();
     const categories = useAppSelector(selectData)
     const icons = [<FiPrinter size={22} />, <FaTabletScreenButton size={22} />, <FaLaptopCode size={22} />, <PiTelevisionSimpleBold size={22} />, <FiSmartphone size={22} />, <FaHeadphones size={22} />, <FaCamera size={22} />, <CgMusicSpeaker size={22} />]
     const [categoriesWithIcons, setCategoriesWithIcons] = useState<ICategoriesWithIcons[] | []>([])
-    useEffect(() => {
-        dispatch(fetchCategoriesAsync(null))
-    }, []);
+
     useEffect(() => {
         if (categories.length > 0) {
             setCategoriesWithIcons(categories.map((i: ICategories, idx: number) => {

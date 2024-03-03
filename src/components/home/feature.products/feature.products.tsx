@@ -2,6 +2,7 @@ import { apiFetchProducts } from "@/config/api"
 import { IProducts } from "@/config/data.type"
 import { useEffect, useState } from "react"
 import ProductCard from "./product.card/product.card"
+import Masonry from 'react-masonry-css'
 
 const FeatureProduct = () => {
     const [features, setFeatures] = useState<IProducts[]>([])
@@ -17,13 +18,20 @@ const FeatureProduct = () => {
     return (<div className="w-main flex flex-col">
         <span className="capitalize text-xl text-tab font-semibold py-4 border-b-2 border-red w-full">
             feature products</span>
-        <div className="flex flex-wrap justify-between">
-            {features.length > 0 && features.map((item, index) => {
-                return (
-                    <ProductCard key={item._id} index={index + 1}
-                        thumb={item.thumb} title={item.title} totalRating={item.totalRating} price={item.price} />
-                )
-            })}
+        <div className="w-full custom-feature">
+            <Masonry
+                breakpointCols={3}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column"
+            >
+                {features && features.length > 0 ?
+                    features.map((item, index) => {
+                        return (
+                            <ProductCard key={item._id} index={index + 1}
+                                thumb={item.thumb} title={item.title} totalRating={item.totalRating} price={item.price} />
+                        )
+                    }) : <>no any products</>}
+            </Masonry>
         </div>
         <div className="flex gap-4 mt-6">
             <div className="w-1/2">
